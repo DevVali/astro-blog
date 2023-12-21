@@ -1,4 +1,8 @@
 ---
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+import Footer from '../components/Footer.astro';
+
 const pageTitle = "About";
 
 const identity = {
@@ -7,8 +11,11 @@ const identity = {
   occupation: "Student",
   hobbies: ["photography", "hobbyhorsing", "technology"],
 };
-
 const skills = ["HTML", "CSS", "JavaScript", "PHP", "Astro", "Writing Docs"];
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -20,9 +27,7 @@ const skills = ["HTML", "CSS", "JavaScript", "PHP", "Astro", "Writing Docs"];
 		<title>Astro Website - {pageTitle}</title>
 	</head>
 	<body>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/blog">Blog</a>
+		<Navigation />
 
 		<h1>{pageTitle}</h1>
         <p>I am a front-end developer enjoying Astro and Tailwind.</p>
@@ -35,7 +40,21 @@ const skills = ["HTML", "CSS", "JavaScript", "PHP", "Astro", "Writing Docs"];
 
 		<p>Skillset:</p>
 		<ul>
-			{skills.map((skill) => <li>{skill}</li>)}
+			{skills.map((skill) => <li class="skill">{skill}</li>)}
 		</ul>
+
+		<Footer/>
 	</body>
 </html>
+
+<style define:vars={{skillColor, fontWeight, textCase}}>
+	h1 {
+		color: purple;
+		font-size: 4rem;
+	}
+	.skill {
+		color: var(--skillColor);
+		font-weight: var(--fontWeight);
+		text-transform: var(--textCase);
+	}
+</style>
