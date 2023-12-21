@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon";
+
+type Props = {
+    icon: "string",
+    link: "string"
+}
+const { icon, link } = Astro.props as Props;
+---
+
+<a href={link}><Icon name={icon} /></a>
+
+<style>
+    a {
+        padding: 2px 3px;
+    }
+    [astro-icon] {
+        height: 25px;
+        width: 25px;
+    }
+    [astro-icon]:hover {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+        transform: translateY(-0.25rem);
+    }
+</style>

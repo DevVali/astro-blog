@@ -1,0 +1,25 @@
+---
+import Social from "./Social.astro";
+const socials = [
+    {
+        icon: "mdi:github",
+        link: "https://github.com/DevVali"
+    },
+    {
+        icon: "mdi:twitter",
+        link: "https://www.twitter.com/ejvali"
+    }
+];
+---
+
+<footer>
+    {socials.map((social) => <Social icon={social.icon} link={social.link} />)}
+</footer>
+
+<style>
+    footer {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 2rem;
+    }
+</style>
