@@ -1,8 +1,5 @@
 ---
-import "../styles/global.css";
-import Navigation from "../components/Navigation.astro";
-import Footer from '../components/Footer.astro';
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "About";
 
 const identity = {
@@ -18,34 +15,20 @@ const fontWeight = "bold";
 const textCase = "uppercase";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Website - {pageTitle}</title>
-	</head>
-	<body>
-		<Navigation />
+<BaseLayout pageTitle={pageTitle}>
+	<p>I am a front-end developer enjoying Astro and Tailwind.</p>
 
-		<h1>{pageTitle}</h1>
-        <p>I am a front-end developer enjoying Astro and Tailwind.</p>
+	<p>Here are few facts about me:</p>
+	<p>My name is {identity.name}</p>
+	<p>I live in {identity.country} and I work as {identity.occupation}</p>
 
-		<p>Here are few facts about me:</p>
-		<p>My name is {identity.name}</p>
-		<p>I live in {identity.country} and I work as {identity.occupation}</p>
+	{identity.hobbies.length >= 2 && <p>Two of my hobies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</p>}
 
-		{identity.hobbies.length >= 2 && <p>Two of my hobies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</p>}
-
-		<p>Skillset:</p>
-		<ul>
-			{skills.map((skill) => <li class="skill">{skill}</li>)}
-		</ul>
-
-		<Footer/>
-	</body>
-</html>
+	<p>Skillset:</p>
+	<ul>
+		{skills.map((skill) => <li class="skill">{skill}</li>)}
+	</ul>
+</BaseLayout>
 
 <style define:vars={{skillColor, fontWeight, textCase}}>
 	h1 {
