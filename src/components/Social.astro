@@ -1,11 +1,7 @@
 ---
 import { Icon } from "astro-icon";
 
-type Props = {
-    icon: "string",
-    link: "string"
-}
-const { icon, link } = Astro.props as Props;
+const { icon, link } = Astro.props;
 ---
 
 <a href={link}><Icon name={icon} /></a>
