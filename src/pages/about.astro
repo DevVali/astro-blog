@@ -1,12 +1,12 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "About";
 
 const identity = {
-  name: "Vali",
-  country: "Slovakia",
-  occupation: "Student",
-  hobbies: ["photography", "hobbyhorsing", "technology"],
+	name: "Vali",
+	country: "Slovakia",
+	occupation: "Student",
+	hobbies: ["photography", "hobbyhorsing", "technology"],
 };
 const skills = ["HTML", "CSS", "JavaScript", "PHP", "Astro", "Writing Docs"];
 
@@ -22,7 +22,13 @@ const textCase = "uppercase";
 	<p>My name is {identity.name}</p>
 	<p>I live in {identity.country} and I work as {identity.occupation}</p>
 
-	{identity.hobbies.length >= 2 && <p>Two of my hobies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</p>}
+	{
+		identity.hobbies.length >= 2 && (
+			<p>
+				Two of my hobies are: {identity.hobbies[0]} and {identity.hobbies[1]}.
+			</p>
+		)
+	}
 
 	<p>Skillset:</p>
 	<ul>
@@ -30,7 +36,7 @@ const textCase = "uppercase";
 	</ul>
 </BaseLayout>
 
-<style define:vars={{skillColor, fontWeight, textCase}}>
+<style define:vars={{ skillColor, fontWeight, textCase }}>
 	h1 {
 		color: purple;
 		font-size: 4rem;
