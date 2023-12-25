@@ -7,13 +7,15 @@ const { frontmatter } = Astro.props;
 const tags = frontmatter.tags;
 
 const unit =
-	Math.abs(dayjs(frontmatter.pubDate).diff(dayjs(), "days")) > 0 ? "days" : "Less than one day";
-const ago = Math.abs(dayjs(frontmatter.pubDate).diff(dayjs(), "days"));
+	Math.abs(dayjs(frontmatter.pubDate.toString()).diff(dayjs(), "days")) > 0
+		? "days"
+		: "Less than one day";
+const ago = Math.abs(dayjs(frontmatter.pubDate.toString()).diff(dayjs(), "days"));
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
 	<p>
-		Published on: {frontmatter.pubDate.slice(0, 10)} ({
+		Published on: {frontmatter.pubDate.toString().slice(0, 10)} ({
 			unit === "days" ? `${ago} ${ago > 1 ? "days" : "day"}` : unit
 		} ago)
 	</p>
